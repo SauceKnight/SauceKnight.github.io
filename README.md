@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/SauceKnight/SauceKnight.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
@@ -35,3 +36,11 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 ### Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+=======
+# SauceKnight.github.io
+Alfredo's Github Page
+
+
+### Welcome to my Page
+Please click the following link to access it: https://sauceknight.github.io/.
+>>>>>>> e6a6db3de1cfb8100b5790731e7a2564184bcb1a
