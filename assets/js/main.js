@@ -1,64 +1,94 @@
-/*
-	Dopetrope by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
 (function($) {
+  
+  "use strict";  
 
-	var	$window = $(window),
-		$body = $('body');
+  $(window).on('load', function() {
 
-	// Breakpoints.
-		breakpoints({
-			xlarge:  [ '1281px',  '1680px' ],
-			large:   [ '981px',   '1280px' ],
-			medium:  [ '737px',   '980px'  ],
-			small:   [ null,      '736px'  ]
-		});
+    /* 
+   MixitUp
+   ========================================================================== */
+  $('#portfolio').mixItUp();
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+  /* 
+   One Page Navigation & wow js
+   ========================================================================== */
+    var OnePNav = $('.onepage-nev');
+    var top_offset = OnePNav.height() - -0;
+    OnePNav.onePageNav({
+      currentClass: 'active',
+      scrollOffset: top_offset,
+    });
+  
+  /*Page Loader active
+    ========================================================*/
+    $('#preloader').fadeOut();
 
-	// Dropdowns.
-		$('#nav > ul').dropotron({
-			mode: 'fade',
-			noOpenerFade: true,
-			alignment: 'center'
-		});
+  // Sticky Nav
+    $(window).on('scroll', function() {
+        if ($(window).scrollTop() > 200) {
+            $('.scrolling-navbar').addClass('top-nav-collapse');
+        } else {
+            $('.scrolling-navbar').removeClass('top-nav-collapse');
+        }
+    });
 
-	// Nav.
+    /* slicknav mobile menu active  */
+    $('.mobile-menu').slicknav({
+        prependTo: '.navbar-header',
+        parentTag: 'liner',
+        allowParentLinks: true,
+        duplicate: true,
+        label: '',
+        closedSymbol: '<i class="icon-arrow-right"></i>',
+        openedSymbol: '<i class="icon-arrow-down"></i>',
+      });
 
-		// Title Bar.
-			$(
-				'<div id="titleBar">' +
-					'<a href="#navPanel" class="toggle"></a>' +
-				'</div>'
-			)
-				.appendTo($body);
+      /* WOW Scroll Spy
+    ========================================================*/
+     var wow = new WOW({
+      //disabled for mobile
+        mobile: false
+    });
 
-		// Panel.
-			$(
-				'<div id="navPanel">' +
-					'<nav>' +
-						$('#nav').navList() +
-					'</nav>' +
-				'</div>'
-			)
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					side: 'left',
-					target: $body,
-					visibleClass: 'navPanel-visible'
-				});
+    wow.init();
 
-})(jQuery);
+    /* Nivo Lightbox 
+    ========================================================*/
+    $('.lightbox').nivoLightbox({
+        effect: 'fadeScale',
+        keyboardNav: true,
+      });
+
+    /* Counter
+    ========================================================*/
+    $('.counterUp').counterUp({
+     delay: 10,
+     time: 1000
+    });
+
+
+    /* Back Top Link active
+    ========================================================*/
+      var offset = 200;
+      var duration = 500;
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > offset) {
+          $('.back-to-top').fadeIn(400);
+        } else {
+          $('.back-to-top').fadeOut(400);
+        }
+      });
+
+      $('.back-to-top').on('click',function(event) {
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: 0
+        }, 600);
+        return false;
+      });
+
+
+
+  });      
+
+}(jQuery));
